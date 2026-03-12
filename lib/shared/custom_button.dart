@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:neurina/core/constants/app_colors.dart';
 import 'package:neurina/shared/custom_text.dart';
 
-
 class CustomButton extends StatelessWidget {
   const CustomButton({
     super.key,
@@ -12,7 +11,8 @@ class CustomButton extends StatelessWidget {
     required this.width,
     required this.border,
     this.title,
-    this.icon,
+    this.prefixIcon,
+    this.suffixIcon,
     this.color,
     this.textColor,
     this.borderColor,
@@ -21,7 +21,8 @@ class CustomButton extends StatelessWidget {
 
   final VoidCallback onTap;
   final String? title;
-  final IconData? icon;
+  final IconData? prefixIcon;
+  final IconData? suffixIcon;
   final double height;
   final double width;
   final double border;
@@ -50,9 +51,10 @@ class CustomButton extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              if (icon != null) Icon(icon, color: textColor ?? Colors.white),
-
-              if (icon != null && title != null) SizedBox(width: 8.w),
+              if (prefixIcon != null) ...[
+                Icon(prefixIcon, color: textColor ?? Colors.white),
+                SizedBox(width: 8.w),
+              ],
 
               if (title != null)
                 CustomText(
@@ -60,6 +62,11 @@ class CustomButton extends StatelessWidget {
                   size: 18.sp,
                   color: textColor ?? Colors.white,
                 ),
+
+              if (suffixIcon != null) ...[
+                SizedBox(width: 8.w),
+                Icon(suffixIcon, color: textColor ?? Colors.white),
+              ],
             ],
           ),
         ),

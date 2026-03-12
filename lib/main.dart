@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:neurina/core/constants/app_colors.dart';
+import 'package:neurina/core/routes/app_routes.dart';
+import 'package:neurina/core/utils/pref_helpers.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final bool firstLaunch = await PrefHelpers.isFirstLaunch();
+  runApp(NeurinaApp(initialRoute: firstLaunch ? AppRoutes.welcome : AppRoutes.login));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
+class NeurinaApp extends StatelessWidget {
+  const NeurinaApp({super.key, required this.initialRoute});
+final String initialRoute;
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -26,9 +30,8 @@ class MyApp extends StatelessWidget {
             selectionColor: AppColors.softBlue.withOpacity(0.5),
           ),
         ),
-        home: Scaffold(
-          body: Center(child: Text('Hello, Neurina!')),
-        ),
+        initialRoute: initialRoute,
+        routes: AppRoutes.routes,
       ),
     );
   }

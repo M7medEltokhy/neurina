@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:neurina/core/constants/app_colors.dart';
-import 'package:neurina/features/auth/views/profile_view.dart';
-import 'package:neurina/features/home/views/home_view.dart';
+import 'package:neurina/features/auth/screens/profile_screen.dart';
+import 'package:neurina/features/home/screens/home_screen.dart';
 
 
 class Root extends StatefulWidget {
@@ -21,10 +21,10 @@ class _RootState extends State<Root> {
   @override
   void initState() {
     screens = [
-      HomeView(),
-      HomeView(),
-      HomeView(),
-      ProfileView(),
+      HomeScreen(),
+      HomeScreen(),
+      HomeScreen(),
+      ProfileScreen(),
     ];
     controller = PageController(initialPage: currentScreen);
     super.initState();
