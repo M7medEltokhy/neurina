@@ -9,75 +9,70 @@ class CustomTextField extends StatefulWidget {
     required this.hint,
     required this.isPassword,
     required this.controller,
+    this.keyboardType,
   });
 
   final String hint;
   final bool isPassword;
   final TextEditingController controller;
+  final TextInputType? keyboardType;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
 }
 
 class _CustomTextFieldState extends State<CustomTextField> {
-  late bool _obscureText;
+  late bool _obscureText = widget.isPassword;
 
-  @override
-  void initState() {
-    _obscureText = widget.isPassword;
-    super.initState();
-  }
-
-  void togglePassword() {
-    setState(() {
-      _obscureText = !_obscureText;
-    });
-  }
+  void _togglePassword() => setState(() => _obscureText = !_obscureText);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: widget.controller,
-      cursorColor: AppColors.softBlue,
+      obscureText: _obscureText,
+      keyboardType: widget.keyboardType,
+      cursorColor: AppColors.primary,
       cursorHeight: 20,
+      style: TextStyle(color: AppColors.white, fontSize: 16.sp),
       decoration: InputDecoration(
+        hintText: widget.hint,
+        hintStyle: TextStyle(color: AppColors.grey, fontSize: 16.sp),
+        filled: true,
+        fillColor: AppColors.cardSurface,
+        contentPadding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 18.h),
         suffixIcon: widget.isPassword
             ? GestureDetector(
-                onTap: togglePassword,
+                onTap: _togglePassword,
                 child: Icon(
                   _obscureText ? CupertinoIcons.eye_slash : CupertinoIcons.eye,
-                  color: AppColors.softBlue,
+                  color: AppColors.grey,
                 ),
               )
             : null,
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.softBlue),
-          borderRadius: BorderRadius.circular(8.r),
+          borderSide: BorderSide(color: AppColors.softBlue.withOpacity(0.4)),
+          borderRadius: BorderRadius.circular(50.r),
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.softBlue,),
-          borderRadius: BorderRadius.circular(8.r),
+          borderSide: BorderSide(color: AppColors.primary, width: 1.5),
+          borderRadius: BorderRadius.circular(50.r),
         ),
         errorBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.red),
-          borderRadius: BorderRadius.circular(8.r),
+          borderSide: const BorderSide(color: Colors.red),
+          borderRadius: BorderRadius.circular(50.r),
         ),
         focusedErrorBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.red),
-          borderRadius: BorderRadius.circular(8.r),
+          borderSide: const BorderSide(color: Colors.red),
+          borderRadius: BorderRadius.circular(50.r),
         ),
-        hintText: widget.hint,
-        hintStyle: TextStyle(color: AppColors.softBlue),
-        fillColor: Colors.white,
-        filled: true,
       ),
       validator: (value) {
         if (value == null || value.isEmpty) {
           return 'Please fill ${widget.hint}';
         }
-        null;
+        return null;
       },
-      obscureText: _obscureText,
     );
   }
 }
