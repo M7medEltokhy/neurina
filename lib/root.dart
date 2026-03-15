@@ -5,7 +5,6 @@ import 'package:neurina/core/constants/app_colors.dart';
 import 'package:neurina/features/auth/screens/profile_screen.dart';
 import 'package:neurina/features/home/screens/home_screen.dart';
 
-
 class Root extends StatefulWidget {
   const Root({super.key});
 
@@ -20,12 +19,7 @@ class _RootState extends State<Root> {
 
   @override
   void initState() {
-    screens = [
-      HomeScreen(),
-      HomeScreen(),
-      HomeScreen(),
-      ProfileScreen(),
-    ];
+    screens = [HomeScreen(), HomeScreen(), HomeScreen(), ProfileScreen()];
     controller = PageController(initialPage: currentScreen);
     super.initState();
   }
@@ -39,7 +33,7 @@ class _RootState extends State<Root> {
         children: screens,
       ),
       bottomNavigationBar: Container(
-        // margin: EdgeInsets.only(bottom: 20.h, right: 10.w, left: 10.w),
+        // margin: EdgeInsets.only(bottom: 40.h, right: 10.w, left: 10.w),
         padding: EdgeInsets.all(10),
         decoration: BoxDecoration(
           color: AppColors.primary,
@@ -56,7 +50,7 @@ class _RootState extends State<Root> {
             backgroundColor: Colors.transparent,
             type: BottomNavigationBarType.fixed,
             selectedItemColor: Colors.white,
-            unselectedItemColor: Colors.grey.shade700,
+            unselectedItemColor: Colors.grey,
             currentIndex: currentScreen,
             onTap: (index) {
               setState(() => currentScreen = index);

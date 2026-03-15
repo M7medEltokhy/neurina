@@ -1,14 +1,12 @@
-
 import 'package:dio/dio.dart';
 import 'package:neurina/core/network/api_error.dart';
 
 class ApiExceptions {
   static ApiError handleError(DioException error) {
-
     final statusCode = error.response?.statusCode;
     final data = error.response?.data;
-    if (statusCode != null && data is Map<String, dynamic>){
-      return ApiError(message: data['message'], statusCode: statusCode);
+    if (statusCode != null && data is Map<String, dynamic>) {
+      return ApiError(message: data['detail'], statusCode: statusCode);
     }
 
     switch (error.type) {
@@ -17,7 +15,9 @@ class ApiExceptions {
       case DioExceptionType.sendTimeout:
         return ApiError(message: 'Send timeout with API server');
       case DioExceptionType.receiveTimeout:
-        return ApiError(message: 'Receive timeout in connection with API server');
+        return ApiError(
+          message: 'Receive timeout in connection with API server',
+        );
       case DioExceptionType.badResponse:
         return ApiError(message: 'Something went wrong');
       case DioExceptionType.badCertificate:
