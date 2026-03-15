@@ -10,12 +10,14 @@ class CustomTextField extends StatefulWidget {
     required this.isPassword,
     required this.controller,
     this.keyboardType,
+    this.validator,
   });
 
   final String hint;
   final bool isPassword;
   final TextEditingController controller;
   final TextInputType? keyboardType;
+  final String? Function(String?)? validator;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -67,12 +69,14 @@ class _CustomTextFieldState extends State<CustomTextField> {
           borderRadius: BorderRadius.circular(50.r),
         ),
       ),
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'Please fill ${widget.hint}';
-        }
-        return null;
-      },
+      validator:
+          widget.validator ??
+          (value) {
+            if (value == null || value.isEmpty) {
+              return 'Please fill ${widget.hint}';
+            }
+            return null;
+          },
     );
   }
 }
