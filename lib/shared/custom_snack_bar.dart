@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:neurina/shared/custom_text.dart';
 
-
 SnackBar customSnackBar(String errorMsg) {
   return SnackBar(
     behavior: SnackBarBehavior.floating,
@@ -21,6 +20,7 @@ SnackBar customSnackBar(String errorMsg) {
           color: Colors.white,
           size: 14.sp,
           weight: FontWeight.w500,
+          maxLines: 5,
         ),
       ],
     ),

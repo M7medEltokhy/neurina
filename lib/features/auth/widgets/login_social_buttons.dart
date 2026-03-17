@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:neurina/core/constants/app_colors.dart';
+import 'package:neurina/features/auth/cubit/auth_cubit.dart';
 import 'package:neurina/shared/custom_button.dart';
 
 class LoginSocialButtons extends StatelessWidget {
@@ -12,7 +14,7 @@ class LoginSocialButtons extends StatelessWidget {
     return Column(
       children: [
         CustomButton(
-          onTap: () {},
+          onTap: () => context.read<AuthCubit>().signInWithGoogle(),
           title: 'Continue with Google',
           height: 56,
           width: 1.sw,
@@ -20,6 +22,11 @@ class LoginSocialButtons extends StatelessWidget {
           color: AppColors.white,
           textColor: AppColors.black,
           borderWidth: 0,
+          prefixWidget: Image.asset(
+            'assets/auth/google.png',
+            height: 30.h,
+            width: 30.w,
+          ),
         ),
         Gap(12.h),
         CustomButton(
@@ -27,11 +34,20 @@ class LoginSocialButtons extends StatelessWidget {
           title: 'Continue with Github',
           height: 56,
           width: 1.sw,
-          border: 50,
           color: AppColors.nearBlack,
           textColor: AppColors.white,
           borderColor: AppColors.softBlue,
           borderWidth: 1,
+          border: 50,
+          prefixWidget: CircleAvatar(
+            backgroundColor: AppColors.white,
+            radius: 18.r,
+            child: Image.asset(
+              'assets/auth/github.png',
+              height: 36.h,
+              width: 36.w,
+            ),
+          ),
         ),
       ],
     );

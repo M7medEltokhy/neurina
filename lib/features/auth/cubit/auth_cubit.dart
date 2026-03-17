@@ -24,15 +24,18 @@ class AuthCubit extends Cubit<AuthState> {
     );
   }
 
-  Future<void> login({
-    required String email,
-    required String password,
-  }) async {
+  Future<void> login({required String email, required String password}) async {
     emit(AuthLoading());
-    final result = await _authRepo.login(
-      email: email,
-      password: password,
+    final result = await _authRepo.login(email: email, password: password);
+    result.fold(
+      (error) => emit(AuthError(error.message)),
+      (response) => emit(AuthSuccess(response.user)),
     );
+  }
+
+  Future<void> signInWithGoogle() async {
+    emit(AuthLoading());
+    final result = await _authRepo.signInWithGoogle();
     result.fold(
       (error) => emit(AuthError(error.message)),
       (response) => emit(AuthSuccess(response.user)),

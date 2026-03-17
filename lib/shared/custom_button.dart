@@ -12,6 +12,7 @@ class CustomButton extends StatelessWidget {
     required this.border,
     this.title,
     this.prefixIcon,
+    this.prefixWidget,
     this.suffixIcon,
     this.color,
     this.textColor,
@@ -22,6 +23,7 @@ class CustomButton extends StatelessWidget {
   final VoidCallback onTap;
   final String? title;
   final IconData? prefixIcon;
+  final Widget? prefixWidget;
   final IconData? suffixIcon;
   final double height;
   final double width;
@@ -51,7 +53,10 @@ class CustomButton extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              if (prefixIcon != null) ...[
+              if (prefixWidget != null) ...[
+                prefixWidget!,
+                SizedBox(width: 8.w),
+              ] else if (prefixIcon != null) ...[
                 Icon(prefixIcon, color: textColor ?? Colors.white),
                 SizedBox(width: 8.w),
               ],
