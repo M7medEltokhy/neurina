@@ -56,13 +56,13 @@ class AuthRepoImpl implements AuthRepo {
       await GoogleSignIn.instance.initialize(
         clientId: Platform.isIOS
             ? '259679132344-08d1j6of13v0b9m4fp25afj9kdgutua5.apps.googleusercontent.com'
-            : '259679132344-8pl921r1co9dep3g7b39cicbgsbc96mj.apps.googleusercontent.com',
+            : null,
+        serverClientId:
+            '259679132344-rr0i75833qjcd6cedbj5vq9cea07m87i.apps.googleusercontent.com',
       );
 
-      final GoogleSignInAccount? account = await GoogleSignIn.instance
+      final GoogleSignInAccount account = await GoogleSignIn.instance
           .authenticate();
-
-      if (account == null) return Left(ApiError(message: 'No Account'));
 
       final GoogleSignInAuthentication auth = await account.authentication;
       final String? idToken = auth.idToken;
