@@ -23,7 +23,7 @@ class LoginSocialButtons extends StatelessWidget {
           textColor: AppColors.black,
           borderWidth: 0,
           prefixWidget: Image.asset(
-            'assets/auth/google.png',
+            'assets/images/auth/google.png',
             height: 30.h,
             width: 30.w,
           ),
@@ -43,7 +43,7 @@ class LoginSocialButtons extends StatelessWidget {
             backgroundColor: AppColors.white,
             radius: 18.r,
             child: Image.asset(
-              'assets/auth/github.png',
+              'assets/images/auth/github.png',
               height: 36.h,
               width: 36.w,
             ),

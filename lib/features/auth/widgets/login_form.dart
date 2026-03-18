@@ -14,7 +14,7 @@ import 'package:neurina/shared/custom_text_field.dart';
 import 'package:neurina/shared/gradient_button.dart';
 
 class LoginForm extends StatefulWidget {
-  LoginForm({
+  const LoginForm({
     super.key,
     required this.emailController,
     required this.passwordController,

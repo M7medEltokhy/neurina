@@ -37,8 +37,8 @@ flutter:
 
   assets:
     - assets/
-    - assets/onboarding/
-    - assets/auth/
+    - assets/images/onboarding/
+    - assets/images/auth/
     - assets/translations/
 
   # An image asset can refer to one or more resolution-specific "variants", see

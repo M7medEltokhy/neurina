@@ -32,7 +32,10 @@ class WelcomeCard extends StatelessWidget {
       child: Stack(
         fit: StackFit.expand,
         children: [
-          Image.asset('assets/onboarding/hero_visual.png', fit: BoxFit.cover),
+          Image.asset(
+            'assets/images/onboarding/hero_visual.png',
+            fit: BoxFit.cover,
+          ),
           WelcomeScanLine(animation: scanAnimation),
         ],
       ),
