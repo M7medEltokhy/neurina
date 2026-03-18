@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:neurina/core/constants/app_colors.dart';
@@ -18,11 +19,11 @@ class BottomText extends StatelessWidget {
           text: TextSpan(
             children: [
               TextSpan(
-                text: text,
+                text: text.tr(),
                 style: TextStyle(fontSize: 14.sp, color: AppColors.grey),
               ),
               TextSpan(
-                text: actionText,
+                text: actionText.tr(),
                 style: TextStyle(
                   fontSize: 14.sp,
                   color: AppColors.primary,

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -38,7 +39,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       cursorHeight: 20,
       style: TextStyle(color: AppColors.white, fontSize: 16.sp),
       decoration: InputDecoration(
-        hintText: widget.hint,
+        hintText: widget.hint.tr(),
         hintStyle: TextStyle(color: AppColors.grey, fontSize: 16.sp),
         filled: true,
         fillColor: AppColors.cardSurface,

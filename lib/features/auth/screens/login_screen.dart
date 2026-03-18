@@ -6,7 +6,7 @@ import 'package:neurina/core/routes/app_routes.dart';
 import 'package:neurina/core/routes/navigation_helper.dart';
 import 'package:neurina/features/auth/widgets/buttom_text.dart';
 import 'package:neurina/features/auth/widgets/login_form.dart';
-import 'package:neurina/features/auth/widgets/login_header.dart';
+import 'package:neurina/features/auth/widgets/auth_header.dart';
 import 'package:neurina/features/auth/widgets/login_social_buttons.dart';
 import 'package:neurina/features/auth/widgets/or_divider.dart';
 
@@ -46,9 +46,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       children: [
                         Gap(60.h),
                         const AuthHeader(
-                          title: 'Good to see\nyou ',
-                          gradientWord: 'Again ✦',
-                          subtitle: 'Your face. Your identity. Sign in. ✦',
+                          title: 'good_to_see_you',
+                          gradientWord: 'again',
+                          subtitle: 'sign_in_subtitle',
                         ),
                         Gap(40.h),
                         LoginForm(
@@ -65,8 +65,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 BottomText(
                   onTap: () => NavigationHelper.pushReplacement(context, AppRoutes.signup),
-                  text: 'Don\'t have an account? ',
-                  actionText: 'Sign Up',
+                  text: 'dont_have_account',
+                  actionText: 'sign_up',
                 ),
                 Gap(24.h),
               ],

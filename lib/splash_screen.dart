@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:neurina/core/routes/app_routes.dart';
 import 'package:neurina/core/routes/navigation_helper.dart';
-import 'package:neurina/core/utils/pref_helpers.dart';
+import 'package:neurina/core/utils/pref_helper.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Future<void> _navigate() async {
-    final bool firstLaunch = await PrefHelpers.isFirstLaunch();
+    final bool firstLaunch = await PrefHelper.isFirstLaunch();
     
     if (!mounted) return;
 

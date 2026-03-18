@@ -4,7 +4,7 @@ import 'package:gap/gap.dart';
 import 'package:neurina/core/constants/app_colors.dart';
 import 'package:neurina/core/routes/app_routes.dart';
 import 'package:neurina/core/routes/navigation_helper.dart';
-import 'package:neurina/core/utils/pref_helpers.dart';
+import 'package:neurina/core/utils/pref_helper.dart';
 import 'package:neurina/shared/custom_button.dart';
 
 class WelcomeButtons extends StatelessWidget {
@@ -16,10 +16,10 @@ class WelcomeButtons extends StatelessWidget {
       children: [
         CustomButton(
           onTap: () async {
-            await PrefHelpers.setLaunched();
+            await PrefHelper.setLaunched();
             NavigationHelper.push(context, AppRoutes.signup);
           },
-          title: 'Get Started',
+          title: 'get_started',
           suffixIcon: Icons.arrow_forward,
           height: 56,
           width: 1.sw,
@@ -30,10 +30,10 @@ class WelcomeButtons extends StatelessWidget {
         Gap(12.h),
         CustomButton(
           onTap: () async {
-            await PrefHelpers.setLaunched();
+            await PrefHelper.setLaunched();
             NavigationHelper.push(context, AppRoutes.login);
           },
-          title: 'I already have an account',
+          title: 'already_have_account',
           height: 56,
           width: 1.sw,
           border: 50,

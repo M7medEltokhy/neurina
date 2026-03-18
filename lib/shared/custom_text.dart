@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class CustomText extends StatelessWidget {
@@ -21,7 +22,7 @@ class CustomText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      text,
+      text.tr(),
       textScaler: TextScaler.linear(1.0),
       textAlign: textAlign,
       maxLines: maxLines,

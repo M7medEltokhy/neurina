@@ -11,7 +11,7 @@ class WelcomeHeadline extends StatelessWidget {
     return Column(
       children: [
         CustomText(
-          text: 'Your Face',
+          text: 'your_face',
           size: 34.sp,
           color: AppColors.white,
           weight: FontWeight.w800,
@@ -21,7 +21,7 @@ class WelcomeHeadline extends StatelessWidget {
             colors: [AppColors.primary, AppColors.softPink],
           ).createShader(bounds),
           child: CustomText(
-            text: 'Reimagined',
+            text: 'reimagined',
             size: 34.sp,
             color: AppColors.white,
             weight: FontWeight.w800,

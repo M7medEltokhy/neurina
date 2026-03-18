@@ -5,7 +5,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:neurina/core/constants/api_endpoints.dart';
 import 'package:neurina/core/network/api_error.dart';
 import 'package:neurina/core/network/api_service.dart';
-import 'package:neurina/core/utils/pref_helpers.dart';
+import 'package:neurina/core/utils/pref_helper.dart';
 import 'package:neurina/features/auth/data/auth_model.dart';
 import 'package:neurina/features/auth/data/auth_repo.dart';
 
@@ -25,7 +25,7 @@ class AuthRepoImpl implements AuthRepo {
         "password": password,
       });
       final Model = AuthModel.fromJson(data);
-      await PrefHelpers.saveToken(Model.accessToken);
+      await PrefHelper.saveToken(Model.accessToken);
       return Right(Model);
     } on ApiError catch (e) {
       return Left(e);
@@ -43,7 +43,7 @@ class AuthRepoImpl implements AuthRepo {
         "password": password,
       });
       final Model = AuthModel.fromJson(data);
-      await PrefHelpers.saveToken(Model.accessToken);
+      await PrefHelper.saveToken(Model.accessToken);
       return Right(Model);
     } on ApiError catch (e) {
       return Left(e);
@@ -73,7 +73,7 @@ class AuthRepoImpl implements AuthRepo {
         "provider": "google",
       });
       final model = AuthModel.fromJson(data);
-      await PrefHelpers.saveToken(model.accessToken);
+      await PrefHelper.saveToken(model.accessToken);
       return Right(model);
     } on ApiError catch (e) {
       return Left(e);

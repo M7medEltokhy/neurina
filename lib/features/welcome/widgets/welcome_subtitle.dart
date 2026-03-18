@@ -10,7 +10,7 @@ class WelcomeSubtitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomText(
       text:
-          'AI-powered face reshaping in\nseconds with unparalleled\nprecision.',
+          'hero_subtitle',
       size: 14.sp,
       color: AppColors.grey,
       weight: FontWeight.w400,

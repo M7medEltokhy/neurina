@@ -49,7 +49,7 @@ class _SignupFormState extends State<SignupForm> {
           return Column(
             children: [
               CustomTextField(
-                hint: 'Name',
+                hint: 'name',
                 isPassword: false,
                 controller: widget.nameController,
                 keyboardType: TextInputType.name,
@@ -57,7 +57,7 @@ class _SignupFormState extends State<SignupForm> {
               ),
               Gap(16.h),
               CustomTextField(
-                hint: 'Email',
+                hint: 'email',
                 isPassword: false,
                 controller: widget.emailController,
                 keyboardType: TextInputType.emailAddress,
@@ -65,7 +65,7 @@ class _SignupFormState extends State<SignupForm> {
               ),
               Gap(16.h),
               CustomTextField(
-                hint: 'Password',
+                hint: 'password',
                 isPassword: true,
                 controller: widget.passwordController,
                 validator: AppValidators.validatePassword,
@@ -74,7 +74,7 @@ class _SignupFormState extends State<SignupForm> {
               state is AuthLoading
                   ? const Center(child: CircularProgressIndicator())
                   : GradientButton(
-                      title: 'Create Account',
+                      title: 'create_account',
                       onTap: () {
                         if (_formKey.currentState!.validate()) {
                           context.read<AuthCubit>().signup(

@@ -15,7 +15,7 @@ class LoginSocialButtons extends StatelessWidget {
       children: [
         CustomButton(
           onTap: () => context.read<AuthCubit>().signInWithGoogle(),
-          title: 'Continue with Google',
+          title: 'continue_with_google',
           height: 56,
           width: 1.sw,
           border: 50,
@@ -31,7 +31,7 @@ class LoginSocialButtons extends StatelessWidget {
         Gap(12.h),
         CustomButton(
           onTap: () {},
-          title: 'Continue with Github',
+          title: 'continue_with_github',
           height: 56,
           width: 1.sw,
           color: AppColors.nearBlack,

@@ -50,7 +50,7 @@ class _LoginFormState extends State<LoginForm> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               CustomTextField(
-                hint: 'Email',
+                hint: 'email',
                 isPassword: false,
                 controller: widget.emailController,
                 keyboardType: TextInputType.emailAddress,
@@ -58,7 +58,7 @@ class _LoginFormState extends State<LoginForm> {
               ),
               Gap(16.h),
               CustomTextField(
-                hint: 'Password',
+                hint: 'password',
                 isPassword: true,
                 controller: widget.passwordController,
                 validator: AppValidators.validatePassword,
@@ -67,7 +67,7 @@ class _LoginFormState extends State<LoginForm> {
               GestureDetector(
                 onTap: () {},
                 child: CustomText(
-                  text: 'Forgot Password?',
+                  text: 'forgot_password',
                   size: 14.sp,
                   color: AppColors.primary,
                   weight: FontWeight.w500,
@@ -77,7 +77,7 @@ class _LoginFormState extends State<LoginForm> {
               state is AuthLoading
                   ? const Center(child: CircularProgressIndicator())
                   : GradientButton(
-                      title: 'Sign In',
+                      title: 'sign_in',
                       onTap: () {
                         if (_formKey.currentState!.validate()) {
                           context.read<AuthCubit>().login(

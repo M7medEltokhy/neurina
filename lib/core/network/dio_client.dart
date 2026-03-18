@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:neurina/core/utils/pref_helpers.dart';
+import 'package:neurina/core/utils/pref_helper.dart';
 
 class DioClient {
   final Dio _dio = Dio(
@@ -13,7 +13,7 @@ class DioClient {
     _dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) async {
-          final token = await PrefHelpers.getToken();
+          final token = await PrefHelper.getToken();
           options.headers['Authorization'] = 'Bearer $token';
           return handler.next(options);
         },
