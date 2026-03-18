@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:neurina/core/constants/api_endpoints.dart';
@@ -52,8 +54,9 @@ class AuthRepoImpl implements AuthRepo {
   Future<Either<ApiError, AuthModel>> signInWithGoogle() async {
     try {
       await GoogleSignIn.instance.initialize(
-        clientId:
-            '259679132344-8pl921r1co9dep3g7b39cicbgsbc96mj.apps.googleusercontent.com',
+        clientId: Platform.isIOS
+            ? '259679132344-08d1j6of13v0b9m4fp25afj9kdgutua5.apps.googleusercontent.com'
+            : '259679132344-8pl921r1co9dep3g7b39cicbgsbc96mj.apps.googleusercontent.com',
       );
 
       final GoogleSignInAccount? account = await GoogleSignIn.instance
