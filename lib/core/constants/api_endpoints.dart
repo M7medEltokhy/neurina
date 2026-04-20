@@ -1,5 +1,5 @@
 class ApiEndpoints {
-  static const String login = '/login';
-  static const String signup = '/signup';
-  static const String googleLogin = '/google-login';
+  static const String login = '/users/login';
+  static const String signup = '/users/signup';
+  static const String googleLogin = '/users/google-login';
 }

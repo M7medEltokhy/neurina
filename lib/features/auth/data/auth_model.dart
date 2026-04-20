@@ -6,7 +6,7 @@ class AuthModel {
 
   factory AuthModel.fromJson(Map<String, dynamic> json) {
     return AuthModel(
-      accessToken: json['access_token'],
+      accessToken: json['access_token'] ?? '',
       user: User.fromJson(json['user']),
     );
   }
@@ -21,9 +21,9 @@ class User {
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
-      id: json['_id'],
-      email: json['email'],
-      name: json['name'],
+      id: json['_id'] ?? '',
+      email: json['email'] ?? '',
+      name: json['name'] ?? '',
     );
   }
 }

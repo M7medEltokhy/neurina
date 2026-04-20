@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:neurina/core/constants/app_colors.dart';
-import 'package:neurina/features/auth/screens/profile_screen.dart';
+import 'package:neurina/features/profile/screens/profile_screen.dart';
 import 'package:neurina/features/home/screens/home_screen.dart';
 
 class Root extends StatefulWidget {
@@ -36,7 +36,7 @@ class _RootState extends State<Root> {
         // margin: EdgeInsets.only(bottom: 40.h, right: 10.w, left: 10.w),
         padding: EdgeInsets.all(10),
         decoration: BoxDecoration(
-          color: AppColors.primary,
+          color: Color.fromARGB(255, 54, 40, 77),
           borderRadius: BorderRadius.circular(30.r),
         ),
         child: Theme(
@@ -49,8 +49,8 @@ class _RootState extends State<Root> {
             elevation: 0,
             backgroundColor: Colors.transparent,
             type: BottomNavigationBarType.fixed,
-            selectedItemColor: Colors.white,
-            unselectedItemColor: Colors.grey,
+            selectedItemColor: AppColors.primary,
+            unselectedItemColor: Color(0xff64748B),
             currentIndex: currentScreen,
             onTap: (index) {
               setState(() => currentScreen = index);

@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:neurina/shared/custom_text.dart';
 
 SnackBar customSnackBar(String errorMsg) {
   return SnackBar(
@@ -15,12 +14,15 @@ SnackBar customSnackBar(String errorMsg) {
       children: [
         Icon(CupertinoIcons.info, color: Colors.white, size: 25.r),
         Gap(10.w),
-        CustomText(
-          text: errorMsg,
-          color: Colors.white,
-          size: 14.sp,
-          weight: FontWeight.w500,
+        Text(
+          errorMsg,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 14.sp,
+            fontWeight: FontWeight.w500,
+          ),
           maxLines: 5,
+          overflow: TextOverflow.ellipsis,
         ),
       ],
     ),

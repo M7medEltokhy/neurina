@@ -4,7 +4,7 @@ import 'package:neurina/core/utils/pref_helper.dart';
 class DioClient {
   final Dio _dio = Dio(
     BaseOptions(
-      baseUrl: 'https://neurina-production.up.railway.app/api/users',
+      baseUrl: 'https://neurina-production-ebe6.up.railway.app/api',
       headers: {"Content-Type": "application/json"},
     ),
   );
