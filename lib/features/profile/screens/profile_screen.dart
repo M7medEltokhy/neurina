@@ -8,6 +8,10 @@ import 'package:neurina/core/routes/app_routes.dart';
 import 'package:neurina/core/routes/navigation_helper.dart';
 import 'package:neurina/core/utils/pref_helper.dart';
 import 'package:neurina/features/profile/cubit/profile_cubit.dart';
+import 'package:neurina/features/profile/cubit/profile_state.dart';
+import 'package:neurina/features/profile/cubit/update_profile_cubit.dart';
+import 'package:neurina/features/profile/data/profile_repo.dart';
+import 'package:neurina/features/profile/screens/edit_profile_screen.dart';
 import 'package:neurina/features/profile/widgets/build_settings_item.dart';
 import 'package:neurina/features/profile/widgets/profile_header.dart';
 import 'package:neurina/features/profile/widgets/profile_section_title.dart';
@@ -41,7 +45,29 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 const ProfileHeader(),
                 Gap(24.h),
                 CustomButton(
-                  onTap: () {},
+                  onTap: () {
+                    final state = context.read<ProfileCubit>().state;
+                    if (state is ProfileSuccess) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => MultiBlocProvider(
+                            providers: [
+                              BlocProvider.value(
+                                value: context.read<ProfileCubit>(),
+                              ),
+                              BlocProvider(
+                                create: (_) => UpdateProfileCubit(
+                                  profileRepo: ProfileRepo(),
+                                ),
+                              ),
+                            ],
+                            child: EditProfileScreen(user: state.user),
+                          ),
+                        ),
+                      );
+                    }
+                  },
                   title: 'edit_profile',
                   height: 50,
                   width: double.infinity,
