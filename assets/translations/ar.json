@@ -39,5 +39,8 @@
   "about_app": "حول التطبيق",
   "terms_conditions" : "الشروط والأحكام",
   "logout_confirmation": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
-  "cancel": "إلغاء"
+  "cancel": "إلغاء",
+  "message": "رسالة",
+  "please_enter_message": "يرجى ادخال رسالة",
+  "send": "ارسال"
 }

@@ -61,4 +61,26 @@ class ProfileRepo {
     }
   }
 
+  /// Contact Us
+  Future<Either<ApiError, String>> sendMessage({
+  required String name,
+  required String email,
+  required String message,
+}) async {
+  try {
+    final response = await apiService.post(
+      ApiEndpoints.contactUs,
+      {
+        'name': name,
+        'email': email,
+        'message': message,
+      },
+    );
+    return Right(response['message']);
+  } on DioError catch (e) {
+    return Left(ApiExceptions.handleError(e));
+  } catch (e) {
+    return Left(ApiError(message: 'An unexpected error occurred'));
+  }
+}
 }

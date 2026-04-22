@@ -1,82 +1,64 @@
-import 'dart:io';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:neurina/core/constants/app_colors.dart';
-import 'package:neurina/features/profile/cubit/profile_cubit.dart';
-import 'package:neurina/features/profile/cubit/update_profile_cubit.dart';
-import 'package:neurina/features/profile/cubit/update_profile_state.dart';
+import 'package:neurina/features/profile/cubit/contact_us_cubit.dart';
+import 'package:neurina/features/profile/cubit/contact_us_state.dart';
 import 'package:neurina/features/profile/data/user_model.dart';
-import 'package:neurina/features/profile/widgets/edit_profile_avatar_picker.dart';
-import 'package:neurina/features/profile/widgets/edit_profile_confirm_dialog.dart';
+import 'package:neurina/features/profile/widgets/contact_us_user_info_card.dart';
 import 'package:neurina/shared/custom_button.dart';
 import 'package:neurina/shared/custom_snack_bar.dart';
 import 'package:neurina/shared/custom_text.dart';
 import 'package:neurina/shared/custom_text_field.dart';
 
-class EditProfileScreen extends StatefulWidget {
-  const EditProfileScreen({super.key, required this.user});
+class ContactUsScreen extends StatefulWidget {
+  const ContactUsScreen({super.key, required this.user});
   final UserModel user;
 
   @override
-  State<EditProfileScreen> createState() => _EditProfileScreenState();
+  State<ContactUsScreen> createState() => _ContactUsScreenState();
 }
 
-class _EditProfileScreenState extends State<EditProfileScreen> {
+class _ContactUsScreenState extends State<ContactUsScreen> {
   final _formKey = GlobalKey<FormState>();
-  final _nameController = TextEditingController();
-  File? _avatar;
-
-  @override
-  void initState() {
-    super.initState();
-    _nameController.text = widget.user.name;
-  }
+  final _messageController = TextEditingController();
 
   @override
   void dispose() {
-    _nameController.dispose();
+    _messageController.dispose();
     super.dispose();
   }
 
-  Future<void> _pickAvatar() async {
-    final picker = ImagePicker();
-    final file = await picker.pickImage(source: ImageSource.gallery);
-    if (file != null) setState(() => _avatar = File(file.path));
-  }
-
-  void _onSave() {
+  void _onSend() {
     if (!_formKey.currentState!.validate()) return;
-    showDialog(
-      context: context,
-      builder: (_) => EditProfileConfirmDialog(
-        onConfirm: () => context.read<UpdateProfileCubit>().updateProfile(
-          name: _nameController.text,
-          profilePicturePath: _avatar?.path,
-        ),
-      ),
+    context.read<ContactUsCubit>().sendMessage(
+      name: widget.user.name,
+      email: widget.user.email,
+      message: _messageController.text,
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<UpdateProfileCubit, UpdateProfileState>(
+    return BlocListener<ContactUsCubit, ContactUsState>(
       listener: (context, state) {
-        if (state is UpdateProfileLoading) {
+        if (state is ContactUsLoading) {
           showDialog(
             context: context,
             barrierDismissible: false,
             builder: (_) => const Center(child: CircularProgressIndicator()),
           );
-        } else if (state is UpdateProfileSuccess) {
+        } else if (state is ContactUsSuccess) {
           if (Navigator.of(context, rootNavigator: true).canPop()) {
             Navigator.of(context, rootNavigator: true).pop();
           }
-          context.read<ProfileCubit>().getProfile();
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(customSnackBar(state.message,type: SnackBarType.success));
           Navigator.pop(context);
-        } else if (state is UpdateProfileFailure) {
+        } else if (state is ContactUsFailure) {
           if (Navigator.of(context, rootNavigator: true).canPop()) {
             Navigator.of(context, rootNavigator: true).pop();
           }
@@ -102,7 +84,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               onPressed: () => Navigator.pop(context),
             ),
             title: CustomText(
-              text: 'edit_profile',
+              text: 'contact_us',
               size: 20.sp,
               color: Colors.white,
               weight: FontWeight.bold,
@@ -114,22 +96,28 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               child: Form(
                 key: _formKey,
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    EditProfileAvatarPicker(
-                      profilePictureUrl: widget.user.profilePictureUrl,
-                      avatar: _avatar,
-                      onTap: _pickAvatar,
+                    ContactUsUserInfoCard(
+                      name: widget.user.name,
+                      email: widget.user.email,
                     ),
-                    Gap(32.h),
+                    Gap(24.h),
                     CustomTextField(
-                      controller: _nameController,
-                      hint: 'name',
+                      controller: _messageController,
+                      hint: 'message',
                       isPassword: false,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'please_enter_message'.tr();
+                        }
+                        return null;
+                      },
                     ),
                     Gap(40.h),
                     CustomButton(
-                      onTap: _onSave,
-                      title: 'save_changes',
+                      onTap: _onSend,
+                      title: 'send',
                       height: 52,
                       width: double.infinity,
                       border: 50,

@@ -39,5 +39,8 @@
   "terms_conditions": "Terms and Conditions",
   "about_app": "About App",
   "logout_confirmation": "Are you sure you want to logout?",
-  "cancel": "Cancel"
+  "cancel": "Cancel",
+  "message": "Message",
+  "please_enter_message": "Please enter a message",
+  "send": "Send"
 }
