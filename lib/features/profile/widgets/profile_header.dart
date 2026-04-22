@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:neurina/features/profile/cubit/profile_cubit.dart';
 import 'package:neurina/features/profile/cubit/profile_state.dart';
+import 'package:neurina/features/profile/widgets/profile_header_skeleton.dart';
 import 'package:neurina/shared/custom_text.dart';
 
 class ProfileHeader extends StatelessWidget {
@@ -15,7 +16,7 @@ class ProfileHeader extends StatelessWidget {
     return BlocBuilder<ProfileCubit, ProfileState>(
       builder: (context, state) {
         if (state is ProfileLoading) {
-          return const _ProfileHeaderSkeleton();
+          return const ProfileHeaderSkeleton();
         }
 
         if (state is ProfileFailure) {
@@ -95,49 +96,6 @@ class ProfileHeader extends StatelessWidget {
           ],
         );
       },
-    );
-  }
-}
-
-class _ProfileHeaderSkeleton extends StatelessWidget {
-  const _ProfileHeaderSkeleton();
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Container(
-          width: 96.r,
-          height: 96.r,
-          decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.08),
-            shape: BoxShape.circle,
-          ),
-        ),
-        Gap(16.w),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              width: 120.w,
-              height: 16.h,
-              decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.08),
-                borderRadius: BorderRadius.circular(8.r),
-              ),
-            ),
-            Gap(8.h),
-            Container(
-              width: 180.w,
-              height: 12.h,
-              decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.05),
-                borderRadius: BorderRadius.circular(8.r),
-              ),
-            ),
-          ],
-        ),
-      ],
     );
   }
 }
