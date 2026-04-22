@@ -1,9 +1,13 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:neurina/core/constants/app_colors.dart';
 import 'package:neurina/features/home/screens/home_screen.dart';
+import 'package:neurina/features/profile/cubit/profile_cubit.dart';
+import 'package:neurina/features/profile/data/profile_repo.dart';
 import 'package:neurina/features/profile/screens/profile_screen.dart';
 
 class Root extends StatefulWidget {
@@ -20,7 +24,15 @@ class _RootState extends State<Root> {
 
   @override
   void initState() {
-    screens = [HomeScreen(), HomeScreen(), ProfileScreen()];
+    screens = [
+      HomeScreen(),
+      HomeScreen(),
+      BlocProvider(
+        create: (context) =>
+            ProfileCubit(profileRepo: ProfileRepo())..getProfile(),
+        child: ProfileScreen(),
+      ),
+    ];
     controller = PageController(initialPage: currentScreen);
     super.initState();
   }
@@ -37,8 +49,8 @@ class _RootState extends State<Root> {
           ),
           Positioned(
             bottom: 20.h,
-            left: 20.w,
-            right: 20.w,
+            left: 30.w,
+            right: 30.w,
             child: Container(
               // margin: EdgeInsets.only(bottom: 20.h, right: 10.w, left: 10.w),
               padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 3.h),
@@ -71,8 +83,8 @@ class _RootState extends State<Root> {
                   _NavItem(
                     icon: CupertinoIcons.profile_circled,
                     label: 'Profile',
-                    isActive: currentScreen == 3,
-                    onTap: () => _navigateTo(3),
+                    isActive: currentScreen == 2,
+                    onTap: () => _navigateTo(2),
                   ),
                 ],
               ),
@@ -128,7 +140,7 @@ class _NavItem extends StatelessWidget {
               ),
               Gap(3.h),
               Text(
-                label,
+                label.tr(),
                 style: TextStyle(
                   fontSize: 12.sp,
                   fontWeight: isActive ? FontWeight.w600 : FontWeight.w400,

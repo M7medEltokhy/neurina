@@ -21,5 +21,17 @@
   "identity": "Identity ✦",
   "sign_up_subtitle": "Your face. Your story. Let's begin. ✦",
   "create_account": "Create Account",
-  "already_have_account_signin": "Already have an account? "
+  "already_have_account_signin": "Already have an account? ",
+  "edit_profile": "Edit Profile",
+  "settings": "Settings",
+  "logout": "Logout",
+  "profile": "Profile",
+  "Home": "Home",
+  "My Photos": "My Photos",
+  "language": "Language",
+  "contact_us": "Contact Us",
+  "terms_conditions": "Terms and Conditions",
+  "about_app": "About App",
+  "logout_confirmation": "Are you sure you want to logout?",
+  "cancel": "Cancel"
 }
