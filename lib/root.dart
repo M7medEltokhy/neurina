@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:neurina/core/constants/app_colors.dart';
 import 'package:neurina/features/home/screens/home_screen.dart';
+import 'package:neurina/features/my_photos/screens/my_photos_screen.dart';
 import 'package:neurina/features/profile/cubit/profile_cubit.dart';
 import 'package:neurina/features/profile/data/profile_repo.dart';
 import 'package:neurina/features/profile/screens/profile_screen.dart';
@@ -25,8 +26,8 @@ class _RootState extends State<Root> {
   @override
   void initState() {
     screens = [
-      HomeScreen(),
-      HomeScreen(),
+      HomeScreen(onSeeAllTap: () => _navigateTo(1)),
+      MyPhotosScreen(),
       BlocProvider(
         create: (context) =>
             ProfileCubit(profileRepo: ProfileRepo())..getProfile(),
@@ -63,7 +64,7 @@ class _RootState extends State<Root> {
                     offset: const Offset(0, 2),
                   ),
                 ],
-                color: AppColors.cardSurface.withOpacity(0.9),
+                color: AppColors.nearBlack.withOpacity(0.9),
                 borderRadius: BorderRadius.circular(50.r),
               ),
               child: Row(

@@ -32,6 +32,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onTapOutside: (event) => FocusScope.of(context).unfocus(),
       controller: widget.controller,
       obscureText: _obscureText,
       keyboardType: widget.keyboardType,
@@ -42,7 +43,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         hintText: widget.hint.tr(),
         hintStyle: TextStyle(color: AppColors.grey, fontSize: 16.sp),
         filled: true,
-        fillColor: AppColors.cardSurface,
+        fillColor: AppColors.nearBlack,
         contentPadding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 18.h),
         suffixIcon: widget.isPassword
             ? GestureDetector(

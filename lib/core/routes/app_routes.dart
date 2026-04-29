@@ -12,6 +12,7 @@ class AppRoutes {
   static const String login = '/login';
   static const String signup = '/signup';
   static const String home = '/home';
+  static const String sourceImg = '/sourceImg';
 
   static Map<String, WidgetBuilder> get routes => {
     welcome: (_) => const WelcomeScreen(),

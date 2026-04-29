@@ -29,13 +29,13 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
-    return RefreshIndicator(
-      onRefresh: () async {
-        context.read<ProfileCubit>().getProfile();
-      },
-      child: Scaffold(
-        backgroundColor: AppColors.background,
-        body: SafeArea(
+    return Scaffold(
+      backgroundColor: AppColors.background,
+      body: SafeArea(
+        child: RefreshIndicator(
+          onRefresh: () async {
+            context.read<ProfileCubit>().getProfile();
+          },
           child: SingleChildScrollView(
             padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
             child: Column(
@@ -87,6 +87,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     _handleLogout(context);
                   },
                 ),
+                Gap(250.h),
               ],
             ),
           ),

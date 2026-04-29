@@ -7,8 +7,6 @@ class AppColors {
   static Color scaffold = Color(0xff171121);
   static Color grey = Color(0xff6B7280);
   static Color nearBlack = Color(0xff080810);
-  static Color cardSurface = Color(0xff080810);
-  static Color electricViolet = Color(0xff7C3AED);
   static Color softPink = Color(0xffF472B6);
   static Color softBlue = Color(0xff64748B);
   static Color background = Color(0xFF0D0B1E);

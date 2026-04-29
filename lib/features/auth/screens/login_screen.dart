@@ -8,7 +8,7 @@ import 'package:neurina/features/auth/widgets/buttom_text.dart';
 import 'package:neurina/features/auth/widgets/login_form.dart';
 import 'package:neurina/features/auth/widgets/auth_header.dart';
 import 'package:neurina/features/auth/widgets/login_social_buttons.dart';
-import 'package:neurina/features/auth/widgets/or_divider.dart';
+import 'package:neurina/shared/or_divider.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

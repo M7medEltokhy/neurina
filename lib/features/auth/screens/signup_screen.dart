@@ -7,7 +7,7 @@ import 'package:neurina/core/routes/navigation_helper.dart';
 import 'package:neurina/features/auth/widgets/buttom_text.dart';
 import 'package:neurina/features/auth/widgets/auth_header.dart';
 import 'package:neurina/features/auth/widgets/login_social_buttons.dart';
-import 'package:neurina/features/auth/widgets/or_divider.dart';
+import 'package:neurina/shared/or_divider.dart';
 import 'package:neurina/features/auth/widgets/signup_form.dart';
 
 class SignupScreen extends StatefulWidget {

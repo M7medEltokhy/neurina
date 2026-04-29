@@ -14,7 +14,7 @@ class WelcomeCard extends StatelessWidget {
       width: 280.w,
       height: 320.h,
       decoration: BoxDecoration(
-        color: AppColors.cardSurface,
+        color: AppColors.nearBlack,
         borderRadius: BorderRadius.circular(24.r),
         border: Border.all(
           color: AppColors.primary.withOpacity(0.4),
